@@ -4,11 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>tikurin.dev</title>
-<meta name="description" content="tikurin.dev - under construction">
+<meta name="description" content="tikurin.dev - 準備中 / under construction">
+<meta name="theme-color" content="#300a24">
+<meta property="og:type" content="website">
+<meta property="og:title" content="tikurin.dev">
+<meta property="og:description" content="tikurin.dev - 準備中 / under construction">
+<meta property="og:url" content="https://tikurin.dev/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23300a24'/%3E%3Ctext x='3' y='22' font-size='18' font-family='monospace' font-weight='bold' fill='%238ae234'%3E%3E_%3C/text%3E%3C/svg%3E">
 <style>
 *{box-sizing:border-box}
-html,body{height:100%;margin:0}
-body{display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,#5e2750,#2c001e 70%);font-family:"Ubuntu Mono","DejaVu Sans Mono",ui-monospace,Menlo,Consolas,"Noto Sans Mono CJK JP","Hiragino Sans","Yu Gothic",monospace}
+html,body{margin:0}
+body{min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,#5e2750,#2c001e 70%);background-attachment:fixed;font-family:"Ubuntu Mono","DejaVu Sans Mono",ui-monospace,Menlo,Consolas,"Noto Sans Mono CJK JP","Hiragino Sans","Yu Gothic",monospace}
 .term{width:100%;max-width:640px;border-radius:10px 10px 6px 6px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.55);background:#300a24;color:#eeeeec;transition:opacity .25s ease,transform .25s ease}
 .term.closed{opacity:0;transform:scale(.96);pointer-events:none}
 .title{position:relative;display:flex;align-items:center;justify-content:center;height:38px;background:linear-gradient(#4a4a4a,#333);color:#dfdbd2;font-size:14px}
@@ -58,7 +65,7 @@ a:hover{text-decoration:underline}
 (function(){var d=new Date(),D=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],p=function(n){return String(n).padStart(2,'0')};document.getElementById('ll').textContent=D[d.getDay()]+' '+M[d.getMonth()]+' '+d.getDate()+' '+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds())+' '+d.getFullYear()})();
 if(Date.now()>=new Date('2026-11-02T00:00:00+09:00').getTime()){document.getElementById('news').style.display='none'}
 document.getElementById('re').addEventListener('click',function(){location.reload()});
-document.getElementById('x').addEventListener('click',function(){var t=document.getElementById('term'),b=document.getElementById('bye'),l=document.getElementById('last'),c=document.getElementById('cur');this.disabled=true;c.insertAdjacentText('beforebegin','exit');l.insertAdjacentHTML('afterend','<div class="out dim">logout</div>');setTimeout(function(){t.classList.add('closed')},900);setTimeout(function(){window.close();setTimeout(function(){t.style.display='none';b.style.display='block'},150)},1160)});
+document.getElementById('x').addEventListener('click',function(){var t=document.getElementById('term'),b=document.getElementById('bye'),l=document.getElementById('last'),c=document.getElementById('cur'),r=document.getElementById('re');this.disabled=true;c.insertAdjacentText('beforebegin','exit');l.insertAdjacentHTML('afterend','<div class="out dim">logout</div>');setTimeout(function(){t.classList.add('closed')},900);setTimeout(function(){window.close();setTimeout(function(){t.style.display='none';b.style.display='block';r.focus()},150)},1160)});
 </script>
 </body>
 </html>
