@@ -20,8 +20,8 @@ body{display:flex;align-items:center;justify-content:center;padding:20px;backgro
 .out{margin:0 0 8px;color:#eeeeec}
 .dim{color:#aea79f}
 .h{margin:0 0 8px;font-size:1.5rem;font-weight:700;color:#fff}
-.dir{color:#729fcf;font-weight:700}
 .sp{margin-top:8px}
+.motd{margin-bottom:12px}
 a{color:#fcaf3e;text-decoration:none}
 a:hover{text-decoration:underline}
 .cursor{display:inline-block;width:.6em;height:1.1em;vertical-align:text-bottom;background:#eeeeec;animation:blink 1.1s steps(1) infinite}
@@ -33,9 +33,8 @@ a:hover{text-decoration:underline}
 <main class="term">
 <div class="title">you@tikurin.dev: ~<div class="btns"><i></i><i></i><i></i></div></div>
 <div class="screen">
-<div><span class="u">you@tikurin.dev</span>:<span class="p">~</span>$ whoami</div>
-<div class="out">you</div>
-<div class="sp"><span class="u">you@tikurin.dev</span>:<span class="p">~</span>$ cat README</div>
+<div class="motd dim">Welcome to tikurin.dev (GNU/Linux)<br>Last login: <span id="ll"></span></div>
+<div><span class="u">you@tikurin.dev</span>:<span class="p">~</span>$ cat README</div>
 <div class="h">tikurin.dev</div>
 <div class="out dim">Under construction. 準備中です。</div>
 <div class="sp"><span class="u">you@tikurin.dev</span>:<span class="p">~</span>$ ls projects/</div>
@@ -47,5 +46,8 @@ a:hover{text-decoration:underline}
 <div class="sp"><span class="u">you@tikurin.dev</span>:<span class="p">~</span>$ <span class="cursor"></span></div>
 </div>
 </main>
+<script>
+(function(){var d=new Date(),D=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],p=function(n){return String(n).padStart(2,'0')};document.getElementById('ll').textContent=D[d.getDay()]+' '+M[d.getMonth()]+' '+d.getDate()+' '+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds())+' '+d.getFullYear()})();
+</script>
 </body>
 </html>
