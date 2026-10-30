@@ -29,7 +29,9 @@ a{color:#fcaf3e;text-decoration:none}
 a:hover{text-decoration:underline}
 .cursor{display:inline-block;width:.6em;height:1.1em;vertical-align:text-bottom;background:#eeeeec;animation:blink 1.1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
-#bye{display:none;color:#aea79f;font-size:15px}
+#bye{display:none;color:#aea79f;font-size:15px;text-align:center}
+#bye button{margin-top:14px;padding:8px 18px;border:1px solid #aea79f;border-radius:4px;background:transparent;color:#fcaf3e;font:inherit;cursor:pointer}
+#bye button:hover{background:rgba(255,255,255,.08)}
 @media (prefers-reduced-motion:reduce){.cursor{animation:none}.term{transition:none}}
 </style>
 </head>
@@ -51,10 +53,11 @@ a:hover{text-decoration:underline}
 <div class="sp" id="last"><span class="u">you@tikurin.dev</span>:<span class="p">~</span>$ <span class="cursor" id="cur"></span></div>
 </div>
 </main>
-<div id="bye">Connection to tikurin.dev closed.</div>
+<div id="bye">Connection to tikurin.dev closed.<br><button type="button" id="re">↻ 再接続</button></div>
 <script>
 (function(){var d=new Date(),D=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],p=function(n){return String(n).padStart(2,'0')};document.getElementById('ll').textContent=D[d.getDay()]+' '+M[d.getMonth()]+' '+d.getDate()+' '+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds())+' '+d.getFullYear()})();
 if(Date.now()>=new Date('2026-11-02T00:00:00+09:00').getTime()){document.getElementById('news').style.display='none'}
+document.getElementById('re').addEventListener('click',function(){location.reload()});
 document.getElementById('x').addEventListener('click',function(){var t=document.getElementById('term'),b=document.getElementById('bye'),l=document.getElementById('last'),c=document.getElementById('cur');this.disabled=true;c.insertAdjacentText('beforebegin','exit');l.insertAdjacentHTML('afterend','<div class="out dim">logout</div>');setTimeout(function(){t.classList.add('closed')},900);setTimeout(function(){window.close();setTimeout(function(){t.style.display='none';b.style.display='block'},150)},1160)});
 </script>
 </body>
