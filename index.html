@@ -6,46 +6,52 @@
 <title>tikurin.dev</title>
 <meta name="description" content="tikurin.dev - under construction">
 <style>
-:root{--bg:#f6f8fa;--fg:#1f2328;--muted:#656d76;--card:#ffffff;--line:#d0d7de;--accent:#0969da;--glow:rgba(9,105,218,.12)}
-@media (prefers-color-scheme:dark){:root{--bg:#0d1117;--fg:#e6edf3;--muted:#8b949e;--card:#161b22;--line:#30363d;--accent:#58a6ff;--glow:rgba(88,166,255,.15)}}
+:root{--win:#f3f3f3;--fg:#1a1a1a;--muted:#5f5f5f;--card:#ffffff;--line:#e0e0e0;--accent:#0067c0;--hover:#f0f0f0;--task:rgba(243,243,243,.85)}
+@media (prefers-color-scheme:dark){:root{--win:#202020;--fg:#ffffff;--muted:#a0a0a0;--card:#2b2b2b;--line:#3a3a3a;--accent:#60cdff;--hover:#383838;--task:rgba(32,32,32,.85)}}
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
-body{display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 50% 20%,var(--glow),transparent 60%),var(--bg);color:var(--fg);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Hiragino Sans","Yu Gothic",sans-serif}
-.card{width:100%;max-width:560px;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)}
-.bar{display:flex;gap:8px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
-.dot{width:12px;height:12px;border-radius:50%;background:var(--line)}
-.bar span{margin-left:8px;color:var(--muted);font:13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.body{padding:28px 24px 32px;font:15px/1.9 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.prompt{color:var(--accent)}
-.muted{color:var(--muted)}
-.proj{font:600 1.05rem/1.6 ui-sans-serif,system-ui,"Hiragino Sans","Yu Gothic",sans-serif}
-.desc{margin:0 0 10px;padding-left:0;color:var(--muted);font:13px/1.7 ui-sans-serif,system-ui,"Hiragino Sans","Yu Gothic",sans-serif}
-h1{margin:20px 0 4px;font:700 2.2rem/1.2 ui-sans-serif,system-ui,sans-serif;letter-spacing:-.02em}
-.sub{margin:0 0 20px;color:var(--muted);font-family:ui-sans-serif,system-ui,sans-serif}
-.cursor{display:inline-block;width:.6em;height:1.1em;margin-left:2px;vertical-align:text-bottom;background:var(--accent);animation:blink 1.1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
-a:hover{border-bottom-color:var(--accent)}
-@media (prefers-reduced-motion:reduce){.cursor{animation:none}}
+body{display:flex;align-items:center;justify-content:center;padding:16px 16px 64px;color:var(--fg);font-family:"Segoe UI Variable","Segoe UI",system-ui,-apple-system,"Hiragino Sans","Yu Gothic UI",sans-serif;background:radial-gradient(ellipse at 20% 30%,#5fb0ff 0,transparent 55%),radial-gradient(ellipse at 80% 70%,#0a3d91 0,transparent 60%),linear-gradient(135deg,#0b5cd5,#1b2f8a 60%,#0b1d5e)}
+.win{width:100%;max-width:520px;background:var(--win);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.45)}
+.title{display:flex;align-items:center;height:36px;padding-left:12px;font-size:12px;background:var(--card);border-bottom:1px solid var(--line)}
+.title .ico{width:14px;height:14px;margin-right:8px;background:var(--accent);border-radius:3px}
+.title .name{flex:1}
+.title .ctl{display:flex;height:100%}
+.title .ctl span{width:46px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--fg)}
+.title .ctl span:last-child:hover{background:#c42b1c;color:#fff}
+.content{padding:24px 24px 28px}
+h1{margin:0 0 4px;font-size:1.9rem;font-weight:600;letter-spacing:-.01em}
+.sub{margin:0 0 20px;color:var(--muted);font-size:14px}
+.label{margin:18px 0 8px;font-size:12px;font-weight:600;color:var(--muted)}
+.item{display:flex;align-items:center;gap:12px;padding:10px 12px;margin-bottom:4px;background:var(--card);border:1px solid var(--line);border-radius:6px;color:inherit;text-decoration:none}
+.item:hover{background:var(--hover)}
+.item .ic{width:32px;height:32px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:6px;background:var(--accent);color:#fff;font-size:15px}
+.item b{display:block;font-size:15px;font-weight:600}
+.item small{display:block;font-size:12px;color:var(--muted)}
+.task{position:fixed;left:0;right:0;bottom:0;height:48px;display:flex;align-items:center;justify-content:center;gap:6px;background:var(--task);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(128,128,128,.3)}
+.start{width:36px;height:36px;display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:10px;border-radius:6px}
+.start i{background:var(--accent);border-radius:1px}
+.tb{height:36px;padding:0 12px;display:flex;align-items:center;font-size:12px;background:var(--hover);border-bottom:2px solid var(--accent);border-radius:6px}
+.clock{position:absolute;right:12px;font-size:12px;line-height:1.3;text-align:right}
+@media (max-width:480px){.clock{display:none}}
 </style>
 </head>
 <body>
-<main class="card">
-<div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>tikurin.dev</span></div>
-<div class="body">
-<div><span class="prompt">$</span> whoami</div>
-<div class="muted">tikurin</div>
+<main class="win">
+<div class="title"><i class="ico"></i><span class="name">tikurin.dev</span><div class="ctl"><span>&#8212;</span><span>&#9633;</span><span>&#10005;</span></div></div>
+<div class="content">
 <h1>tikurin.dev</h1>
 <p class="sub">Under construction. 準備中です。</p>
-<div><span class="prompt">$</span> ls projects</div>
-<div class="proj"><a href="https://nitocbus.pages.dev/" rel="noopener">NITOCバスナビ</a></div>
-<p class="desc">小山駅東口 ⇄ 小山高専のバス時刻表</p>
-<div><span class="prompt">$</span> echo $ID</div>
-<div class="muted">tikurin43016</div>
-<div><span class="prompt">$</span> open <a href="https://x.com/tikurin43016" rel="noopener">x.com/tikurin43016</a></div>
-<div><span class="prompt">$</span> open <a href="https://www.instagram.com/tikurin43016/" rel="noopener">instagram.com/tikurin43016</a></div>
-<div><span class="prompt">$</span> <span class="cursor"></span></div>
+<div class="label">プロジェクト</div>
+<a class="item" href="https://nitocbus.pages.dev/" rel="noopener"><span class="ic">&#128652;</span><span><b>NITOCバスナビ</b><small>小山駅東口 ⇄ 小山高専のバス時刻表</small></span></a>
+<div class="label">アカウント　ID: tikurin43016</div>
+<a class="item" href="https://x.com/tikurin43016" rel="noopener"><span class="ic">X</span><span><b>X</b><small>x.com/tikurin43016</small></span></a>
+<a class="item" href="https://www.instagram.com/tikurin43016/" rel="noopener"><span class="ic">&#9711;</span><span><b>Instagram</b><small>instagram.com/tikurin43016</small></span></a>
 </div>
 </main>
+<div class="task"><div class="start"><i></i><i></i><i></i><i></i></div><div class="tb">tikurin.dev</div><div class="clock" id="c"></div></div>
+<script>
+function t(){var d=new Date(),p=function(n){return String(n).padStart(2,'0')};document.getElementById('c').innerHTML=p(d.getHours())+':'+p(d.getMinutes())+'<br>'+d.getFullYear()+'/'+(d.getMonth()+1)+'/'+d.getDate()}
+t();setInterval(t,15000);
+</script>
 </body>
 </html>
