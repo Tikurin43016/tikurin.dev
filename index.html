@@ -9,11 +9,12 @@
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
 body{display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,#5e2750,#2c001e 70%);font-family:"Ubuntu Mono","DejaVu Sans Mono",ui-monospace,Menlo,Consolas,"Noto Sans Mono CJK JP","Hiragino Sans","Yu Gothic",monospace}
-.term{width:100%;max-width:640px;border-radius:10px 10px 6px 6px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.55);background:#300a24;color:#eeeeec}
+.term{width:100%;max-width:640px;border-radius:10px 10px 6px 6px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.55);background:#300a24;color:#eeeeec;transition:opacity .25s ease,transform .25s ease}
+.term.closed{opacity:0;transform:scale(.96);pointer-events:none}
 .title{position:relative;display:flex;align-items:center;justify-content:center;height:38px;background:linear-gradient(#4a4a4a,#333);color:#dfdbd2;font-size:14px}
 .btns{position:absolute;right:12px;display:flex;gap:8px}
 .btns i{width:14px;height:14px;border-radius:50%;background:#555}
-.btns i:last-child{background:#e95420}
+.btns button{width:14px;height:14px;padding:0;border:0;border-radius:50%;background:#e95420;cursor:pointer}
 .screen{padding:16px 18px 22px;font-size:15px;line-height:1.75;word-break:break-word}
 .u{color:#8ae234;font-weight:700}
 .p{color:#729fcf;font-weight:700}
@@ -26,12 +27,13 @@ a{color:#fcaf3e;text-decoration:none}
 a:hover{text-decoration:underline}
 .cursor{display:inline-block;width:.6em;height:1.1em;vertical-align:text-bottom;background:#eeeeec;animation:blink 1.1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
-@media (prefers-reduced-motion:reduce){.cursor{animation:none}}
+#bye{display:none;color:#aea79f;font-size:15px}
+@media (prefers-reduced-motion:reduce){.cursor{animation:none}.term{transition:none}}
 </style>
 </head>
 <body>
-<main class="term">
-<div class="title">you@tikurin.dev: ~<div class="btns"><i></i><i></i><i></i></div></div>
+<main class="term" id="term">
+<div class="title">you@tikurin.dev: ~<div class="btns"><i></i><i></i><button type="button" id="x" aria-label="close"></button></div></div>
 <div class="screen">
 <div class="motd dim">Welcome to tikurin.dev (GNU/Linux)<br>Last login: <span id="ll"></span></div>
 <div><span class="u">you@tikurin.dev</span>:<span class="p">~</span>$ cat README</div>
@@ -43,11 +45,13 @@ a:hover{text-decoration:underline}
 <div class="out">tikurin43016</div>
 <div class="sp"><span class="u">you@tikurin.dev</span>:<span class="p">~</span>$ ls links/</div>
 <div class="out"><a href="https://x.com/tikurin43016" rel="noopener">x.com/tikurin43016</a><br><a href="https://www.instagram.com/tikurin43016/" rel="noopener">instagram.com/tikurin43016</a></div>
-<div class="sp"><span class="u">you@tikurin.dev</span>:<span class="p">~</span>$ <span class="cursor"></span></div>
+<div class="sp" id="last"><span class="u">you@tikurin.dev</span>:<span class="p">~</span>$ <span class="cursor" id="cur"></span></div>
 </div>
 </main>
+<div id="bye">Connection to tikurin.dev closed.</div>
 <script>
 (function(){var d=new Date(),D=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],p=function(n){return String(n).padStart(2,'0')};document.getElementById('ll').textContent=D[d.getDay()]+' '+M[d.getMonth()]+' '+d.getDate()+' '+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds())+' '+d.getFullYear()})();
+document.getElementById('x').addEventListener('click',function(){var t=document.getElementById('term'),b=document.getElementById('bye'),l=document.getElementById('last'),c=document.getElementById('cur');this.disabled=true;c.insertAdjacentText('beforebegin','exit');l.insertAdjacentHTML('afterend','<div class="out dim">logout</div>');setTimeout(function(){t.classList.add('closed')},900);setTimeout(function(){window.close();setTimeout(function(){t.style.display='none';b.style.display='block'},150)},1160)});
 </script>
 </body>
 </html>
